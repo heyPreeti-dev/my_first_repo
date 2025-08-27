@@ -1,0 +1,57 @@
+.container {
+  /* background-color: rgb(227, 227, 227); */
+}
+
+.sign-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 23px;
+}
+
+.naplogo img {
+  width: 150px;
+  height: 54px;
+}
+
+.hero_line h1 {
+  font-size: 30px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.my-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+
+.button button {
+background-color: #fff;
+border-radius: 8px;
+width: 100%;
+height: 54px;
+border: 1px solid #ccc;
+color: #000;
+margin-bottom: 1rem;
+outline: none;
+padding: 0.9rem 1.5rem;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 5px;
+}
+
+.btn button {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+}

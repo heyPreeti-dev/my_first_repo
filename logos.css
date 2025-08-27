@@ -1,0 +1,234 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+#navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10px;
+}
+
+.navbar {
+  background-image: linear-gradient(to right, #94d062, #0a8b22);
+}
+.navbar-nav {
+  margin-left: auto;
+  padding: 0 !important;
+}
+
+.logo img {
+  width: 150px;
+  padding-left: 20px;
+}
+
+.navbar-nav a {
+  text-decoration: none;
+  color: aliceblue;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.navbar-nav li {
+  padding: 0 30px;
+}
+
+.playbtn {
+  padding: 20px;
+}
+
+#banner {
+  background-color: #63e455;
+}
+
+#banner .row {
+  padding: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.col-md-6 h4 {
+  color: white;
+  font-weight: 600;
+}
+
+.col-md-6 p {
+  font-weight: 500;
+}
+
+.col-md-6 a {
+  text-decoration: none;
+  display: inline;
+  padding-right: 10px;
+  color: rgb(240, 240, 239);
+  font-weight: 600;
+  padding-left: 0;
+}
+
+.col-md-6 a img {
+  padding: 0 20px 0 0;
+}
+
+.col-md-6 .himage {
+  padding-left: 120px;
+}
+
+button {
+  border-radius: 50px;
+  background-color: #cd176f;
+  width: 90px;
+  font-weight: 600;
+  border-color: 3px #f9f9f9;
+}
+
+.service .btn {
+  padding: 0px 700px;
+}
+
+.btn button {
+  border-radius: 800px;
+  width: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.btn button:focus {
+  outline: none; /* remove default */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+  border-radius: 4px; /* adjust to your button's shape */
+}
+
+.service {
+  background-color: #9edb4a;
+  height: 520px;
+}
+
+.service .col-12 {
+  padding-top: 50px;
+}
+
+.heading::before {
+  content: "";
+  background: #f7f7f8;
+  height: 3px;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  transform: translateY(63px);
+  border-radius: 2px;
+}
+
+.heading::after {
+  content: "";
+  background: #252527;
+  height: 8px;
+  width: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  display: block;
+  transform: translateY(9px);
+  border-radius: 5px;
+}
+
+.about {
+  background-color: #37d347;
+  padding: 30px;
+  
+}
+
+.col-md-6 .img-fluid {
+  border: 0px solid #060f08;
+  border-radius: 2rem;
+  box-shadow: 10px 10px 15px rgba(24, 90, 24, 0.5);
+}
+
+.client {
+  background-color: #99c929;
+  padding: 30px;
+}
+
+.testimonial {
+  border-left: 4px solid black;
+  height: auto;
+  border-radius: 0rem 1rem;
+}
+
+.testimonial img {
+  height: 100px;
+  width: 100px;
+  border: 1px solid #880365;
+  border-radius: 50%;
+  box-shadow: 10px 10px 15px rgba(135, 164, 18, 0.881);
+}
+
+.icon{
+  background-color: #63e455;
+  padding: 50px;
+}
+.social-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding-top: 10px;
+}
+
+.social-media img {
+height: 40px;
+border: 1px solid #ccc;
+border-radius:1rem;
+transition:0.5s;
+}
+.social-media a:hover img {
+  transform: translateY(-9px);
+}
+
+.social-media a img {
+  border: 1px solid #e9e6e6;
+border-radius:.2rem;
+}
+
+.footer {
+   background-image: linear-gradient(to right, #d94cb1, #6b8e09);
+   z-index: 10px;
+   bottom: 0;
+   position: sticky;
+}
+
+
+.container {
+  padding: 3rem;
+}
+.footer h3 {
+ color: white;
+ font-size: 20px;
+ font-weight: 700;
+}
+
+.col-md-4 a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: rgb(254, 254, 254);
+  font-weight: 600;
+}
+
+.col-md-4 p {
+  color: white;
+}
+
+.col-md-4 .btn btn-danger {
+  padding: 20px;
+}
+
+
