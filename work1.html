@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Happy Birthday — Misterjii</title>
+    <style>
+      :root {
+        --bg1: linear-gradient(135deg, #2cdc2c 0%, #c30808 50%, #dc1547 100%);
+        --card-bg: rgba(91, 240, 80, 0.85);
+        --accent: #d87895;
+        --muted: #ce1111;
+        --glass: rgba(26, 180, 46, 0.12);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto,
+          "Helvetica Neue", Arial;
+      }
+
+      body {
+        background: var(--bg1);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .stage {
+        width: min(1100px, 96vw);
+        height: min(700px, 86vh);
+        background: linear-gradient(
+          180deg,
+          rgba(13, 36, 187, 0.7),
+          rgba(5, 173, 16, 0.55)
+        );
+        border-radius: 22px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+        overflow: hidden;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 380px;
+      }
+
+      /* Right side image */
+      .side-image {
+        padding: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(0, 0, 0, 0.03)
+        );
+        position: relative;
+      }
+      .side-image .photo {
+        width: 320px;
+        height: 420px;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        border: 6px solid rgba(255, 255, 255, 0.5);
+        background: linear-gradient(180deg, #fff, #ffe6f0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .side-image .photo img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      .side-image .caption {
+        position: absolute;
+        left: 18px;
+        bottom: 18px;
+        background: var(--glass);
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 13px;
+        color: #fff;
+      }
+
+      /* Main left area */
+      .main {
+        padding: 36px 40px;
+        position: relative;
+        overflow: hidden;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+      .logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #d50909, #34039f);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: var(--accent);
+        font-size: 22px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 28px;
+        color: #f7f3f3;
+      }
+      p.lead {
+        margin: 6px 0 20px;
+        color: (--muted: #c9f7c7);
+      }
+
+      /* Tabs */
+      .tabs {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+      .tab {
+        background: transparent;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.22s;
+        position: relative;
+      }
+      .tab:focus {
+        outline: 2px solid rgba(66, 62, 63, 0.18);
+      }
+      .tab.active {
+        background: rgba(192, 33, 189, 0.12);
+        color:  #fff;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 18px rgba(135, 5, 44, 0.08);
+      }
+
+      .panel {
+        background: #e30a39; 
+        backdrop-filter: blur(6px);
+        padding: 20px;
+        border-radius: 14px;
+        min-height: 270px;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      }
+
+      /* Fun cards inside panels */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .card {
+        padding: 12px;
+        border-radius: 10px;
+        background: linear-gradient(
+          180deg,
+          rgba(233, 233, 228, 0.7),
+          rgba(255, 255, 255, 0.55)
+        );
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      }
+      .card h3 {
+        margin: 0 0 6px;
+        font-size: 16px;
+      }
+      .card p {
+        margin: 0;
+        color: #444;
+        font-size: 14px;
+      }
+
+      /* Balloons container — absolute behind content */
+      .balloons {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+      }
+      .balloon {
+        position: absolute;
+        bottom: -140px;
+        width: 64px;
+        height: 88px;
+        border-radius: 50% 50% 50% 50%;
+        transform-origin: center bottom;
+        opacity: 0.95;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: #fff;
+      }
+      .balloon::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -40px;
+        width: 2px;
+        height: 36px;
+        background: rgba(0, 0, 0, 0.08);
+      }
+
+      /* Colors for balloons */
+      .b1 {
+        background: linear-gradient(180deg, #ff7ab6, #bc0344);
+      }
+      .b2 {
+        background: linear-gradient(180deg, #ffd07a, #ffb347);
+      }
+      .b3 {
+        background: linear-gradient(180deg, #8bd3ff, #4aa6ff);
+      }
+      .b4 {
+        background: linear-gradient(180deg, #c9f7c7, #6be06b);
+      }
+      .b5 {
+        background: linear-gradient(180deg, #d6b3ff, #a06cff);
+      }
+
+      /* float animation */
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) rotate(-6deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        50% {
+          transform: translateY(-60vh) rotate(6deg);
+        }
+        100% {
+          transform: translateY(-140vh) rotate(-6deg);
+          opacity: 0;
+        }
+      }
+
+      /* generate variety */
+      .balloon:nth-child(1) {
+        left: 6%;
+        animation: floatUp 11s linear infinite;
+        animation-delay: 0s;
+        transform: scale(0.9);
+      }
+      .balloon:nth-child(2) {
+        left: 18%;
+        animation: floatUp 13s linear infinite;
+        animation-delay: 1.6s;
+        transform: scale(1.02);
+      }
+      .balloon:nth-child(3) {
+        left: 30%;
+        animation: floatUp 10s linear infinite;
+        animation-delay: 0.8s;
+        transform: scale(0.82);
+      }
+      .balloon:nth-child(4) {
+        left: 42%;
+        animation: floatUp 14s linear infinite;
+        animation-delay: 2.1s;
+        transform: scale(1.08);
+      }
+      .balloon:nth-child(5) {
+        left: 54%;
+        animation: floatUp 12s linear infinite;
+        animation-delay: 0.4s;
+        transform: scale(0.95);
+      }
+      .balloon:nth-child(6) {
+        left: 66%;
+        animation: floatUp 15s linear infinite;
+        animation-delay: 3.2s;
+        transform: scale(1.12);
+      }
+      .balloon:nth-child(7) {
+        left: 78%;
+        animation: floatUp 9s linear infinite;
+        animation-delay: 0.6s;
+        transform: scale(0.87);
+      }
+      .balloon:nth-child(8) {
+        left: 88%;
+        animation: floatUp 13s linear infinite;
+        animation-delay: 1.1s;
+        transform: scale(1);
+      }
+
+      /* small flourish */
+      .sparkles {
+        position: absolute;
+        right: 22px;
+        top: 18px;
+        z-index: 5;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .stage {
+          grid-template-columns: 1fr;
+          height: auto;
+        }
+        .side-image {
+          order: 2;
+          padding: 18px;
+        }
+        .main {
+          order: 1;
+          padding: 22px;
+        }
+        .side-image .photo {
+          width: 260px;
+          height: 340px;
+        }
+        .panel {
+          min-height: 220px;
+        }
+      }
+
+      @media (max-width: 420px) {
+        body {
+          padding: 14px;
+        }
+        .logo {
+          width: 46px;
+          height: 46px;
+        }
+        h1 {
+          font-size: 20px;
+        }
+        .tabs {
+          flex-wrap: wrap;
+        }
+        .cards {
+          grid-template-columns: 1fr;
+        }
+        .side-image .photo {
+          width: 200px;
+          height: 260px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage" role="main" aria-label="Birthday surprise webpage">
+      <div class="main">
+        <div class="brand">
+          <div class="logo">🎂</div>
+          <div>
+            <h1>Happy Birthday — Misterjii!</h1>
+            <p class="lead">Open this all option which is GIVE to .</p>
+          </div>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Birthday sections">
+          <button
+            class="tab active"
+            data-tab="1"
+            role="tab"
+            aria-selected="true"
+          >
+            Memories
+          </button>
+          <button class="tab" data-tab="2" role="tab">Wishes</button>
+          <button class="tab" data-tab="3" role="tab">Surprise</button>
+          <button class="tab" data-tab="4" role="tab">Playlist</button>
+        </div>
+
+        <div class="panel" id="panels">
+          <div class="panel-content" data-panel="1">
+            <div class="cards">
+              <div class="card">
+                <h3>A Day We Met</h3>
+                <p>
+                  Ham fisrt time anjali ke birthday me mile the mujhe abhi bhi
+                  yad hai wo apka look lmbe bal ravan jaisa muchh upr se red
+                  shirt par us time wo bs casual hi meeting th aap to mujhe thik
+                  se jante hi ni to aur mai pasand bhi ni aai thi.fir ham vidya
+                  ke birthday me mile the hmne jo sath me dance kiya th wo mujhe
+                  sbse achha lga th
+                </p>
+              </div>
+              <div class="card">
+                <h3>First Chat/Call/Trip</h3>
+                <p>
+                  August me hmara facebook se chat start hua th fir insta fir
+                  dheere whtsp, call. wo pal mai abhi bhi yad krti hu to mn me
+                  gudgudi sa lgta hai automatic face me smile aa jata hai,
+                  sachme wo bhi ky din the.First time apke sath manpat wo bhi
+                  mujhe yad hai.Mujhe ek bar aur apke sath manpat jane ka mn pta
+                  ni wo din bhi kab ayega.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-content" data-panel="2" style="display: none">
+            <div class="cards">
+              <div class="card">
+                <h3>My Wish</h3>
+                <p>
+                  Apke sath to meri bhut sari wishes hai, pta ni apko ky ky btau
+                  par mn krta hai btane ka aise to aap sunte nhi ho hmesha bat
+                  taal dete ho ya fir mjak me le lete ho, ignore krte ho.Lekin
+                  ye chiz mai apko yaha ni btaungi aap mujhe puchna tb
+                  btaungi.Hope so mere se jldi ye chize puchho.
+                </p>
+              </div>
+              <div class="card">
+                <h3>Promise</h3>
+                <p>
+                  Mai apke sath sat fero ke sath-sath sat vachano ka promise
+                  krna chahti hu, par pta ni ham yaha tak phuch payengen ki nhi
+                  itna effort kr payengen ya nhi roj shadi ke liye bat hote rhta
+                  hai didi ka, smjh ni aata kisko ky bolu....🤝🤝
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-content" data-panel="3" style="display: none">
+            <div class="cards">
+              <div class="card">
+                <h3>Gift</h3>
+                <p>
+                  gift to sbko acche lgte hai aur mere mind gift planning bhi
+                  achha hota hai bs thoda financial issues ke vjh se mai apna
+                  feeling apko express ni kr pati, sorry about that.Par fir bhi
+                  maine kuch alg present apke liye ready kiya hai isko padh rhe
+                  ho mtlb apko apki gifts mil hi gayi hongi.😍
+                </p>
+              </div>
+              <div class="card">
+                <h3>Plan</h3>
+                <p>
+                  Plan to apke sath bhut sari chizo ka bahar kahi sundar jagaho
+                  par ghumne firne , entertainment ky nhi sochti hu. Mujhe bhut
+                  mn krta hai apke sath ghumne ka par baat paise ka aa jata hai
+                  isiliye khud ko shutdown krna pdhta hai.🙂
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-content" data-panel="4" style="display: none">
+            <div class="card">
+              <h3>Today's Playlist</h3>
+              <p>
+                
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="balloons" aria-hidden="true">
+          <div class="balloon b1"></div>
+          <div class="balloon b2"></div>
+          <div class="balloon b3"></div>
+          <div class="balloon b4"></div>
+          <div class="balloon b5"></div>
+          <div class="balloon b2"></div>
+          <div class="balloon b3"></div>
+          <div class="balloon b1"></div>
+        </div>
+      </div>
+
+      <aside class="side-image" aria-label="Photo and surprise">
+        <div class="photo" id="photo">
+          <!-- Inline SVG cake as a clickable surprise (no external images) -->
+          <svg
+            width="240"
+            height="320"
+            viewBox="0 0 240 320"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="20"
+              y="140"
+              width="200"
+              height="100"
+              rx="12"
+              fill="#fff4f9"
+              stroke="#ffd1e6"
+              stroke-width="4"
+            />
+            <rect
+              x="44"
+              y="100"
+              width="152"
+              height="60"
+              rx="10"
+              fill="#fff7f0"
+              stroke="#ffd7c6"
+              stroke-width="3"
+            />
+            <g>
+              <ellipse cx="120" cy="150" rx="66" ry="10" fill="#fff1f6" />
+            </g>
+            <!-- candles -->
+            <g id="candles" transform="translate(60,80)">
+              <rect x="0" y="0" width="10" height="24" rx="3" fill="#ff6b81" />
+              <rect x="26" y="0" width="10" height="28" rx="3" fill="#ffd166" />
+              <rect x="52" y="0" width="10" height="20" rx="3" fill="#74d3ff" />
+            </g>
+            <!-- flame shapes -->
+            <g>
+              <path
+                d="M70 75 C72 70,78 70,80 75 C76 72,74 72,70 75Z"
+                fill="#ffdd7a"
+              />
+              <path
+                d="M96 73 C98 68,104 68,106 73 C102 70,100 70,96 73Z"
+                fill="#ffdd7a"
+              />
+              <path
+                d="M122 77 C124 72,130 72,132 77 C128 74,126 74,122 77Z"
+                fill="#ffdd7a"
+              />
+            </g>
+            <!-- heart -->
+            <path
+              d="M120 40 C110 22,86 28,86 48 C86 62,120 84,120 84 C120 84,154 62,154 48 C154 28,130 22,120 40Z"
+              fill="#ffb6d5"
+              opacity="0.95"
+            />
+          </svg>
+        </div>
+        <div class="caption">Click the cake</div>
+      </aside>
+    </div>
+
+    <script>
+      // Tabs logic
+      const tabs = document.querySelectorAll(".tab");
+      const panels = document.querySelectorAll(".panel-content");
+      tabs.forEach((t) =>
+        t.addEventListener("click", () => {
+          tabs.forEach((x) => {
+            x.classList.remove("active");
+            x.setAttribute("aria-selected", "false");
+          });
+          t.classList.add("active");
+          t.setAttribute("aria-selected", "true");
+          const id = t.dataset.tab;
+          panels.forEach((p) => {
+            p.style.display = p.dataset.panel === id ? "block" : "none";
+          });
+        })
+      );
+
+      // small interactive surprise when clicking the cake
+      const photo = document.getElementById("photo");
+      photo.style.cursor = "pointer";
+      photo.addEventListener("click", () => {
+        // Quick popup modal style
+        const message = document.createElement("div");
+        message.style.position = "fixed";
+        message.style.inset = "0";
+        message.style.display = "flex";
+        message.style.alignItems = "center";
+        message.style.justifyContent = "center";
+        message.style.zIndex = 9999;
+        const card = document.createElement("div");
+        card.style.padding = "22px";
+        card.style.borderRadius = "16px";
+        card.style.boxShadow = "0 10px 40px rgba(0,0,0,0.3)";
+        card.style.background = "linear-gradient(180deg,#fff, #fff0f6)";
+        card.style.textAlign = "center";
+        card.style.maxWidth = "88vw";
+        card.innerHTML = `<h2 style=\"margin:0 0 8px;color:#ff4a89\">Surprise! 🎁</h2><p style=\"margin:0 0 12px;color:#333\">Check your phone — I sent you a sweet message and a small video. Love you!</p><button id=\"closeBtn\" style=\"padding:8px 14px;border-radius:10px;border:none;background:#ff5a8b;color:#fff;font-weight:700;cursor:pointer\">Close</button>`;
+        message.appendChild(card);
+        document.body.appendChild(message);
+        document.getElementById("closeBtn").addEventListener("click", () => {
+          message.remove();
+        });
+        // little confetti sprinkles
+        createConfetti();
+      });
+
+      function createConfetti() {
+        const n = 32;
+        for (let i = 0; i < n; i++) {
+          const el = document.createElement("div");
+          el.style.position = "fixed";
+          el.style.width = "10px";
+          el.style.height = "6px";
+          el.style.left = 50 + (Math.random() - 0.5) * 60 + "%";
+          el.style.top = 40 + Math.random() * 10 + "%";
+          el.style.background = [
+            "#ff7ab6",
+            "#ffd166",
+            "#74d3ff",
+            "#6be06b",
+            "#a06cff",
+          ][Math.floor(Math.random() * 5)];
+          el.style.transform = "rotate(" + Math.random() * 360 + "deg)";
+          el.style.borderRadius = "2px";
+          el.style.zIndex = 10000;
+          el.style.opacity = 1;
+          el.style.transition =
+            "transform 1.4s linear,opacity 1.4s linear, top 1.4s linear, left 1.4s linear";
+          document.body.appendChild(el);
+          requestAnimationFrame(() => {
+            el.style.top = 110 + Math.random() * 20 + "%";
+            el.style.left = Math.random() * 100 + "%";
+            el.style.opacity = 0;
+          });
+          setTimeout(() => el.remove(), 1600);
+        }
+      }
+    </script>
+  </body>
+</html>
