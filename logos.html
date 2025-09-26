@@ -46,6 +46,18 @@
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Error,
               soluta nobis in consequatur repellendus totam voluptatibus vel
               maxime impedit fuga necessitatibus, voluptates culpa libero at.
+                <button id="myButton">Click Me</button>
+  <div id="message"></div>
+
+  <script>
+    const button = document.getElementById('myButton');
+    const message = document.getElementById('message');
+
+    button.addEventListener('click', () => {
+      button.classList.add('square');
+      message.textContent = "Button was clicked";
+    });
+  </script>
             </p>
             <a href="#" class="playbtn"
               ><img src="/Yotta/playbtn.png" />WATCH TUTORIAL</a
@@ -215,5 +227,6 @@
     <script src="/bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
+
 
 
