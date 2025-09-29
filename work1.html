@@ -146,13 +146,13 @@
       }
       .tab.active {
         background: rgba(192, 33, 189, 0.12);
-        color:  #fff;
+        color: #fff;
         transform: translateY(-3px);
         box-shadow: 0 6px 18px rgba(135, 5, 44, 0.08);
       }
 
       .panel {
-        background: #e30a39; 
+        background: #e30a39;
         backdrop-filter: blur(6px);
         padding: 20px;
         border-radius: 14px;
@@ -370,8 +370,8 @@
         <div class="brand">
           <div class="logo">🎂</div>
           <div>
-            <h1>Happy Birthday — Misterjii!</h1>
-            <p class="lead">Open this all option which is GIVE to .</p>
+            <h1>Happy Birthday — Misterjii! (●'◡'●)</h1>
+            <p class="lead">Happy birthday ji your all wishes come true and wish you for greate future and success❤️</p>
           </div>
         </div>
 
@@ -468,9 +468,7 @@
           <div class="panel-content" data-panel="4" style="display: none">
             <div class="card">
               <h3>Today's Playlist</h3>
-              <p>
-                
-              </p>
+              <p></p>
             </div>
           </div>
         </div>
@@ -552,86 +550,120 @@
         <div class="caption">Click the cake</div>
       </aside>
     </div>
+     <!-- Put this just before </body> -->
+<!-- Background Music -->
+<audio id="bg-music" loop>
+  <source src="WhatsApp Audio 2025-09-30 at 00.24.23_118e95de.mp3" type="audio/mpeg">
+</audio>
 
-    <script>
-      // Tabs logic
-      const tabs = document.querySelectorAll(".tab");
-      const panels = document.querySelectorAll(".panel-content");
-      tabs.forEach((t) =>
-        t.addEventListener("click", () => {
-          tabs.forEach((x) => {
-            x.classList.remove("active");
-            x.setAttribute("aria-selected", "false");
-          });
-          t.classList.add("active");
-          t.setAttribute("aria-selected", "true");
-          const id = t.dataset.tab;
-          panels.forEach((p) => {
-            p.style.display = p.dataset.panel === id ? "block" : "none";
-          });
-        })
-      );
-
-      // small interactive surprise when clicking the cake
-      const photo = document.getElementById("photo");
-      photo.style.cursor = "pointer";
-      photo.addEventListener("click", () => {
-        // Quick popup modal style
-        const message = document.createElement("div");
-        message.style.position = "fixed";
-        message.style.inset = "0";
-        message.style.display = "flex";
-        message.style.alignItems = "center";
-        message.style.justifyContent = "center";
-        message.style.zIndex = 9999;
-        const card = document.createElement("div");
-        card.style.padding = "22px";
-        card.style.borderRadius = "16px";
-        card.style.boxShadow = "0 10px 40px rgba(0,0,0,0.3)";
-        card.style.background = "linear-gradient(180deg,#fff, #fff0f6)";
-        card.style.textAlign = "center";
-        card.style.maxWidth = "88vw";
-        card.innerHTML = `<h2 style=\"margin:0 0 8px;color:#ff4a89\">Surprise! 🎁</h2><p style=\"margin:0 0 12px;color:#333\">Check your phone — I sent you a sweet message and a small video. Love you!</p><button id=\"closeBtn\" style=\"padding:8px 14px;border-radius:10px;border:none;background:#ff5a8b;color:#fff;font-weight:700;cursor:pointer\">Close</button>`;
-        message.appendChild(card);
-        document.body.appendChild(message);
-        document.getElementById("closeBtn").addEventListener("click", () => {
-          message.remove();
-        });
-        // little confetti sprinkles
-        createConfetti();
+<script>
+  // Tabs logic (same as before)
+  const tabs = document.querySelectorAll(".tab");
+  const panels = document.querySelectorAll(".panel-content");
+  tabs.forEach((t) =>
+    t.addEventListener("click", () => {
+      tabs.forEach((x) => {
+        x.classList.remove("active");
+        x.setAttribute("aria-selected", "false");
       });
+      t.classList.add("active");
+      t.setAttribute("aria-selected", "true");
+      const id = t.dataset.tab;
+      panels.forEach((p) => {
+        p.style.display = p.dataset.panel === id ? "block" : "none";
+      });
+    })
+  );
 
-      function createConfetti() {
-        const n = 32;
-        for (let i = 0; i < n; i++) {
-          const el = document.createElement("div");
-          el.style.position = "fixed";
-          el.style.width = "10px";
-          el.style.height = "6px";
-          el.style.left = 50 + (Math.random() - 0.5) * 60 + "%";
-          el.style.top = 40 + Math.random() * 10 + "%";
-          el.style.background = [
-            "#ff7ab6",
-            "#ffd166",
-            "#74d3ff",
-            "#6be06b",
-            "#a06cff",
-          ][Math.floor(Math.random() * 5)];
-          el.style.transform = "rotate(" + Math.random() * 360 + "deg)";
-          el.style.borderRadius = "2px";
-          el.style.zIndex = 10000;
-          el.style.opacity = 1;
-          el.style.transition =
-            "transform 1.4s linear,opacity 1.4s linear, top 1.4s linear, left 1.4s linear";
-          document.body.appendChild(el);
-          requestAnimationFrame(() => {
-            el.style.top = 110 + Math.random() * 20 + "%";
-            el.style.left = Math.random() * 100 + "%";
-            el.style.opacity = 0;
-          });
-          setTimeout(() => el.remove(), 1600);
-        }
-      }
-    </script>
+  // small interactive surprise when clicking the cake
+  const photo = document.getElementById("photo");
+  const music = document.getElementById("bg-music");
+
+  photo.style.cursor = "pointer";
+  photo.addEventListener("click", () => {
+    // play music on cake click
+    music.play();
+
+    // popup modal with slider
+    const message = document.createElement("div");
+    message.style.position = "fixed";
+    message.style.inset = "0";
+    message.style.display = "flex";
+    message.style.alignItems = "center";
+    message.style.justifyContent = "center";
+    message.style.zIndex = 9999;
+
+    const card = document.createElement("div");
+    card.style.padding = "22px";
+    card.style.borderRadius = "16px";
+    card.style.boxShadow = "0 10px 40px rgba(0,0,0,0.3)";
+    card.style.background = "linear-gradient(180deg,#fff, #fff0f6)";
+    card.style.textAlign = "center";
+    card.style.maxWidth = "88vw";
+
+    // 🔹 Slideshow HTML
+    card.innerHTML = `
+   <div class="slider" style="position:relative; width:240px; height:320px; margin:0 auto; border-radius:16px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.25);">
+    <img src="screenshots/taklu.jpg" class="slide" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; opacity:1; transition:opacity 1s;">
+    <img src="mithu1.jpg" class="slide" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; opacity:0; transition:opacity 1s;">
+    <img src="mithu2.jpg" class="slide" style="width:100%; height:100%; object-fit:fill; position:absolute; top:0; left:0; opacity:0; transition:opacity 1s;">
+  </div>
+      <button id="closeBtn" style="margin-top:12px;padding:8px 14px;border-radius:10px;border:none;background:#ff5a8b;color:#fff;font-weight:700;cursor:pointer">
+        Close
+      </button>
+    `;
+
+    message.appendChild(card);
+    document.body.appendChild(message);
+
+    // Start slideshow
+    const slides = card.querySelectorAll(".slide");
+    let index = 0;
+    setInterval(() => {
+      slides.forEach((s, i) => {
+        s.style.opacity = i === index ? "1" : "0";
+      });
+      index = (index + 1) % slides.length;
+    }, 2500); // change every 2.5s
+
+    // Close button event → stop music + remove popup
+    document.getElementById("closeBtn").addEventListener("click", () => {
+      music.pause();
+      music.currentTime = 0; // reset
+      message.remove();
+    });
+
+    // little confetti sprinkles
+    createConfetti();
+  });
+
+  function createConfetti() {
+    const n = 32;
+    for (let i = 0; i < n; i++) {
+      const el = document.createElement("div");
+      el.style.position = "fixed";
+      el.style.width = "10px";
+      el.style.height = "6px";
+      el.style.left = 50 + (Math.random() - 0.5) * 60 + "%";
+      el.style.top = 40 + Math.random() * 10 + "%";
+      el.style.background = [
+        "#ff7ab6", "#ffd166", "#74d3ff", "#6be06b", "#a06cff"
+      ][Math.floor(Math.random() * 5)];
+      el.style.transform = "rotate(" + Math.random() * 360 + "deg)";
+      el.style.borderRadius = "2px";
+      el.style.zIndex = 10000;
+      el.style.opacity = 1;
+      el.style.transition =
+        "transform 1.4s linear,opacity 1.4s linear, top 1.4s linear, left 1.4s linear";
+      document.body.appendChild(el);
+      requestAnimationFrame(() => {
+        el.style.top = 110 + Math.random() * 20 + "%";
+        el.style.left = Math.random() * 100 + "%";
+        el.style.opacity = 0;
+      });
+      setTimeout(() => el.remove(), 1600);
+    }
+  }
+</script>
   </body>
 </html>
