@@ -601,71 +601,72 @@
     card.style.textAlign = "center";
     card.style.maxWidth = "88vw";
 
-    // 🔹 Slideshow HTML
-  //   card.innerHTML = `
-  // //  <div class="slider" style="position:relative; width:240px; height:320px; margin:0 auto; border-radius:16px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.25);">
-  // //   <img src="mithu.jpg" class="slide" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; opacity:1; transition:opacity 1s;">
-  // //   <img src="mithu1.jpg" class="slide" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; opacity:0; transition:opacity 1s;">
-  // //   <img src="mithu2.jpg" class="slide" style="width:100%; height:100%; object-fit:fill; position:absolute; top:0; left:0; opacity:0; transition:opacity 1s;">
-  // // </div>
-  //     <button id="closeBtn" style="margin-top:12px;padding:8px 14px;border-radius:10px;border:none;background:#ff5a8b;color:#fff;font-weight:700;cursor:pointer">
-  //       Close
-  //     </button>
-  //   `;
+//     🔹 Slideshow HTML
+//     card.innerHTML = `
+//    <div class="slider" style="position:relative; width:240px; height:320px; margin:0 auto; border-radius:16px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.25);">
+//     <img src="mithu.jpg" class="slide" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; opacity:1; transition:opacity 1s;">
+//     <img src="mithu1.jpg" class="slide" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; opacity:0; transition:opacity 1s;">
+//     <img src="mithu2.jpg" class="slide" style="width:100%; height:100%; object-fit:fill; position:absolute; top:0; left:0; opacity:0; transition:opacity 1s;">
+//   </div>
+//       <button id="closeBtn" style="margin-top:12px;padding:8px 14px;border-radius:10px;border:none;background:#ff5a8b;color:#fff;font-weight:700;cursor:pointer">
+//         Close
+//       </button>
+//     `;
 
-    message.appendChild(card);
-    document.body.appendChild(message);
+//     message.appendChild(card);
+//     document.body.appendChild(message);
 
-    // Start slideshow
-    const slides = card.querySelectorAll(".slide");
-    let index = 0;
-    setInterval(() => {
-      slides.forEach((s, i) => {
-        s.style.opacity = i === index ? "1" : "0";
-      });
-      index = (index + 1) % slides.length;
-    }, 2500); // change every 2.5s
+//     // Start slideshow
+//     const slides = card.querySelectorAll(".slide");
+//     let index = 0;
+//     setInterval(() => {
+//       slides.forEach((s, i) => {
+//         s.style.opacity = i === index ? "1" : "0";
+//       });
+//       index = (index + 1) % slides.length;
+//     }, 2500); // change every 2.5s
 
-    // Close button event → stop music + remove popup
-    document.getElementById("closeBtn").addEventListener("click", () => {
-      music.pause();
-      music.currentTime = 0; // reset
-      message.remove();
-    });
+//     // Close button event → stop music + remove popup
+//     document.getElementById("closeBtn").addEventListener("click", () => {
+//       music.pause();
+//       music.currentTime = 0; // reset
+//       message.remove();
+//     });
 
-    // little confetti sprinkles
-    createConfetti();
-  });
+//     // little confetti sprinkles
+//     createConfetti();
+//   });
 
-  function createConfetti() {
-    const n = 32;
-    for (let i = 0; i < n; i++) {
-      const el = document.createElement("div");
-      el.style.position = "fixed";
-      el.style.width = "10px";
-      el.style.height = "6px";
-      el.style.left = 50 + (Math.random() - 0.5) * 60 + "%";
-      el.style.top = 40 + Math.random() * 10 + "%";
-      el.style.background = [
-        "#ff7ab6", "#ffd166", "#74d3ff", "#6be06b", "#a06cff"
-      ][Math.floor(Math.random() * 5)];
-      el.style.transform = "rotate(" + Math.random() * 360 + "deg)";
-      el.style.borderRadius = "2px";
-      el.style.zIndex = 10000;
-      el.style.opacity = 1;
-      el.style.transition =
-        "transform 1.4s linear,opacity 1.4s linear, top 1.4s linear, left 1.4s linear";
-      document.body.appendChild(el);
-      requestAnimationFrame(() => {
-        el.style.top = 110 + Math.random() * 20 + "%";
-        el.style.left = Math.random() * 100 + "%";
-        el.style.opacity = 0;
-      });
-      setTimeout(() => el.remove(), 1600);
-    }
-  }
-</script>
+//   function createConfetti() {
+//     const n = 32;
+//     for (let i = 0; i < n; i++) {
+//       const el = document.createElement("div");
+//       el.style.position = "fixed";
+//       el.style.width = "10px";
+//       el.style.height = "6px";
+//       el.style.left = 50 + (Math.random() - 0.5) * 60 + "%";
+//       el.style.top = 40 + Math.random() * 10 + "%";
+//       el.style.background = [
+//         "#ff7ab6", "#ffd166", "#74d3ff", "#6be06b", "#a06cff"
+//       ][Math.floor(Math.random() * 5)];
+//       el.style.transform = "rotate(" + Math.random() * 360 + "deg)";
+//       el.style.borderRadius = "2px";
+//       el.style.zIndex = 10000;
+//       el.style.opacity = 1;
+//       el.style.transition =
+//         "transform 1.4s linear,opacity 1.4s linear, top 1.4s linear, left 1.4s linear";
+//       document.body.appendChild(el);
+//       requestAnimationFrame(() => {
+//         el.style.top = 110 + Math.random() * 20 + "%";
+//         el.style.left = Math.random() * 100 + "%";
+//         el.style.opacity = 0;
+//       });
+//       setTimeout(() => el.remove(), 1600);
+//     }
+//   }
+// </script>
   </body>
 </html>
 
  -->
+
